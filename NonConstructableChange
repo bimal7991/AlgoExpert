@@ -1,0 +1,20 @@
+package AlgoExpert.io;
+import java.util.*;
+public class NonConstructableChange {
+    public int nonConstructibleChange(int[] coins) {
+        // Write your code here.
+        Arrays.sort(coins);
+        int j=0;
+        int sum=0;
+        int current=0;
+        while(j<coins.length){
+            if(coins[j]<=current+1)
+                current=current+coins[j];
+            else if(coins[j]>current+1)
+                return current+1;
+            j++;
+        }
+        return current+1;
+
+    }
+}
