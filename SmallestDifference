@@ -1,0 +1,18 @@
+public class Solution {
+    public static int smallestDifferencePair(ArrayList<Integer> arr1, int n, ArrayList<Integer> arr2, int m) {
+        // Write your code here
+        Collections.sort(arr1);
+        Collections.sort(arr2);
+        int i=0,j=0;
+        int min=Integer.MAX_VALUE;
+        while(i<n && j<m){
+            min=Math.min(min,Math.abs(arr1.get(i)-arr2.get(j)));
+            if(arr1.get(i)<arr2.get(j)){
+               i++;
+            }
+            else
+            j++;
+        }
+        return min;
+    }
+}
