@@ -1,0 +1,32 @@
+public int[] missingNumbers(int[] nums) {
+
+        // Write your code here.
+        int sum=0;
+        for(int i:nums)
+            sum+=i;
+        int n=nums.length+2;
+        int diff=n*(n+1)/2-sum;
+        int mid=diff/2;
+        int leftsum=mid*(mid+1)/2;
+        sum=0;
+        for(int i:nums)
+            if(i<=mid)
+                sum+=i;
+        int small=leftsum-sum;
+        int large=diff-small;
+        return new int[] {small,large};
+    }
+    public int[] missingNumbers(int[] nums) {
+        
+        // Write your code here.
+        int n=nums.length+2;
+        boolean []visited = new boolean[n+1];
+        for (int i = 0; i < nums.length; i++)
+            visited[nums[i]] = true;
+        int ans[]=new int[2];
+        int k=0;
+        for (int i = 1; i <= n; i++)
+            if (! visited[i])
+                ans[k++]=i;
+        return ans;
+    }
