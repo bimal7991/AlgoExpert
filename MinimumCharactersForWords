@@ -1,0 +1,26 @@
+package AlgoExpert.io;
+import java.util.*;
+public class MinimumCharactersForWords {
+    public char[] minimumCharactersForWords(String[] words) {
+        // Write your code here.
+        HashMap<Character,Integer> hm=new HashMap<>();
+        for(String s:words){
+            HashMap<Character,Integer> hm2=new HashMap<>();
+            for(char c:s.toCharArray()){
+                hm2.put(c,hm2.getOrDefault(c,0)+1);
+            }
+            for(char k:hm2.keySet()){
+                    hm.put(k,Math.max(hm.getOrDefault(k,0),hm2.get(k)));
+            }
+        }
+        List<Character> list=new ArrayList<>();
+        for(char k:hm.keySet()){
+            for(int i=0;i<hm.get(k);i++)
+                list.add(k);
+        }
+        char ans[]=new char[list.size()];
+        for(int i=0;i<list.size();i++)
+            ans[i]=list.get(i);
+        return ans;
+    }
+}
